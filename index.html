@@ -7,13 +7,17 @@
     <link rel="stylesheet" href="src/CSS/index.css">
 </head>
 <body>
-    <h2 class = "titulo">Projeto lista de compras 2026</h2>
+    <h2 class = "titulo">Projeto cristo jr</h2>
 
-    <buttton onclick="logout()">Sair</buttton>
+    <div class="conteiners">
+        <ul id="lista"></ul>
+        <input type = "text" id="item" placeholder="Novo Item">
+        <div class="botoes">
+            <button onclick="adicionarItem()">Adicionar</button>
+            <buttton onclick="logout()">Sair</buttton>
+        </div>
+    </div>
 
-    <ul id="lista"></ul>
-    <input type = "text" id="item" placeholder="Novo Item">
-    <button onclick="adicionarItem()">Adicionar</button>
     <script type = "module" src="app.js"></script>
 </body>
 </html>
