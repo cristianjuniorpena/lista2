@@ -49,16 +49,17 @@
     font-weight: 500;
  }
 
- .input {
+ input {
     width: 100%;
     padding: 14px;
     margin: 10px 0;
+    border: 1px solid (--cor-primaria-1);
     border-radius: var(--ratio);
     font-size: 1rem;
     transition: var(--transtion);
  }
  
- .input.focus {
+ input.focus {
     border-color: var(--cor-primaria-3);
     outline: none;
     box-shadow: 0 0 3px rgba(181, 1, 181, 0.25);
