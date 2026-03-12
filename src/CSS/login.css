@@ -45,4 +45,19 @@
 
  .titulo {
     font-size: clamp(1.5rem, 2vw + 1rem, 2rem);
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+ }
+
+ .input {
+    width: 100%;
+    padding: 14px;
+    margin: 10px 0;
+    border-radius: var(--ratio);
+    font-size: 1rem;
+    transition: var(--transtion);
+ }
+ 
+ .input.focus {
+    border-color: var(--cor-primaria-1);
  }
