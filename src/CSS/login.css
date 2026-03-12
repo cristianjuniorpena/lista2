@@ -78,8 +78,8 @@
     font-weight: 500;
     border: none;
     border-radius: var(--ratio);
-    background-color: var(--cor-primaria-3);
-    color: var(--cor-branco);
+    background-color: var(--cor-primaria-2);
+    color: var(--cor-primaria-3);
     cursor: pointer;
     transition: var(--transition);
  }
