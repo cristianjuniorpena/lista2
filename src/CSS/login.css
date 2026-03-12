@@ -14,7 +14,7 @@
     --fonte: "Honk", system-ui;
 
     --ratio: 12px; 
-    --transtion: 0.3s ease;
+    --transition: 0.3s ease;
 }
  *{
     margin: 0;
@@ -56,7 +56,7 @@
     border: 1px solid (--cor-primaria-1);
     border-radius: var(--ratio);
     font-size: 1rem;
-    transition: var(--transtion);
+    transition: var(--transition);
  }
  
  input.focus {
@@ -78,10 +78,10 @@
     font-weight: 500;
     border: none;
     border-radius: var(--ratio);
-    background-color: #000;
-    color: var(--cor-primaria-3);
+    background-color: var(--cor-primaria-3);
+    color: var(--cor-branco);
     cursor: pointer;
-    transition: var (--transtion);
+    transition: var(--transition);
  }
 
  button.hover {
