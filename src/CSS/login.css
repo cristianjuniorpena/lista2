@@ -59,7 +59,7 @@
  }
  
  .input.focus {
-    border-color: var(--cor-primaria-1);
+    border-color: var(--cor-primaria-3);
     outline: none;
     box-shadow: 0 0 3px rgba(181, 1, 181, 0.25);
  }
