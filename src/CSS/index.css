@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Honk:MORF@15&display=swap');
+
+:root {
+    --cor-primaria-1: #95B8D1;
+    --cor-primaria-2: #E8DDB5;
+    --cor-primaria-3: #666A86;
+
+    --cor-branco: #fff;
+    --cor-preto: #000;0
+
+    --cor-sombra: rgba(0, 0, 0, 0.15);
+    --cor-texto: #333;
+    
+    --fonte: "Honk", system-ui;
+
+    --ratio: 12px; 
+    --transtion: 0.3s ease;
+}
+ *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+ }
+ body {
+    font-family: var(--fonte);
+    background: #95B8D1;
+    background: linear-gradient(90deg,rgba(149, 184, 209, 1) 0%, rgba(232, 221, 181, 1) 100%, rgba(102, 106, 134, 1) 100%);
+    
+    display: flex;
+    justify-content: center;
+    align-content:  100vh;
+    padding: 20px;
+ }
