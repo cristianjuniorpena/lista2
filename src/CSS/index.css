@@ -17,83 +17,34 @@
     --transtion: 0.3s ease;
 }
  *{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
- }
- body {
-    font-family: var(--fonte);
-    background: #95B8D1;
-    background: linear-gradient(90deg,rgba(149, 184, 209, 1) 0%, rgba(232, 221, 181, 1) 100%, rgba(102, 106, 134, 1) 100%);
-    
-    display: flex;
-    justify-content: center;
-    align-items:  center;
-    min-height: 100vh;
-    padding: 20px;
- }
-
-  .container {
-    background-color: var(--cor-branco);
-    padding: clamp(2rem);
-    border-radius: var(--ratio);
-    box-shadow: 0 8px 24px var(--cor-sombra);
-    width: 100%;
-    max-width: 400px;
-    text-align: center;
- }
-
-  .titulo {
-    font-size: clamp(1.5rem, 2vw + 1rem, 2rem);
-    margin-bottom: 1.5rem;
-    font-weight: 500;
- }
-
- input {
-    width: 100%;
-    padding: 14px;
-    margin: 10px 0;
-    border: 1px solid (--cor-primaria-1);
-    border-radius: var(--ratio);
-    font-size: 1rem;
-    transition: var(--transition);
- }
- 
- input.focus {
-    border-color: var(--cor-primaria-3);
-    outline: none;
-    box-shadow: 0 0 3px rgba(181, 1, 181, 0.25);
- }
-
- .botoes {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin-top: 20px;
- }
-
- button {
-    padding: 12px;
-    font-size: 1rem;
-    font-weight: 500;
-    border: none;
-    border-radius: var(--ratio);
-    background-color: var(--cor-primaria-2);
-    color: var(--cor-primaria-3);
-    cursor: pointer;
-    transition: var(--transition);
- }
-
- button.hover {
-    background-color: var(--cor-branco);
- }
-
- @media (max-width:360px) {
-    .container {
-        padding: 1.5rem;
-    }
-
-    input, button {
-        font-size: 0.95rem;
-    }
+   margin: 0;
+   padding:0;
+   box-sizing: border-box;
+}
+body{
+   font-family: var(--fonte);
+   background: #31081F;
+   background: linear-gradient(90deg,rgba(49, 8, 31, 1) 0%, rgba(173, 52, 62, 1) 50%, rgba(71, 71, 71, 1) 100%);
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   min-height: 100vh;
+   padding: 20px;
+}
+#logo {
+   width: 150px;
+   height: auto;
+   margin-bottom: 20px;
+   border-radius: var(--raio);
+}
+.titulo {
+   font-size: clamp(1.5rem, 2vw + 1rem, 2rem);
+   color: var(--cor-texto);
+}
+button[onclick="logout()"] {
+   align-self: flex-end;
+   margin-bottom: 1.5rem;
+   background-color: var=(var(--cor-primaria-1));
+   color: var(--cor-primaria-4);
+   padding: 10;
 }
