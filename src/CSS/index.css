@@ -79,18 +79,6 @@ cursor: pointer;
 transition: var(--transition);
 }
 
-button {
-padding: 12px;
-font-size: 1rem;
-font-weight: 500;
-border: none;
-border-radius: var(--ratio);
-background-color: var(--cor-primaria-2);
-color: var(--cor-branco);
-cursor: pointer;
-transition: var(--transition);
-}
-
 button.hover {
 background-color: var(--cor-primaria-1);
 }
@@ -132,7 +120,16 @@ transition: var(--transition);
 }
 
 button[onclick="logout()"] :hover {
-background-color: var(--cor-primaria-2);
+align-self: flex-end;
+margin-bottom: 1.5rem;
+background-color: var=(var(--cor-primaria-1));
+color: var(--cor-primaria-4);
+padding: 10px 16px;
+border: none;
+border-radius: var(--ratio);
+cursor: pointer;
+font-weight: 500;
+transition: var(--transition);
 }
 #lista{
 width:100%;
