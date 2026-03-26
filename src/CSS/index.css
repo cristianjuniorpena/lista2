@@ -157,6 +157,7 @@ border: 1px solid var(--cor-texto);
 border-radius: var(--ratio);
 font-size: 1rem;
 transition: var(--transition);
+box-shadow: 0 2px 6px var(--cor-texto)
 }
 #item:focus {
 border: 1px solid var(--cor-primaria-1);
