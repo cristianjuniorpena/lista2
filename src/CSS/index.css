@@ -109,7 +109,7 @@ border-radius: var(--ratio);
 button[onclick="logout()"] {
 align-self: flex-end;
 margin-bottom: 1.5rem;
-background-color: var=(var(--cor-primaria-1));
+background-color: var(--cor-primaria-1);
 color: var(--cor-primaria-4);
 padding: 10px 16px;
 border: none;
