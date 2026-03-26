@@ -24,7 +24,7 @@ box-sizing: border-box;
 body{
 font-family: var(--fonte);
 background: #31081F;
-background: linear-gradient(90deg,rgba(49, 8, 31, 1) 0%, rgba(173, 52, 62, 1) 50%, rgba(71, 71, 71, 1) 100%);
+background: linear-gradient(90deg,rgba(149, 184, 209, 1) 0%, rgba(232, 221, 181, 1) 100%, rgba(102, 106, 134, 1) 100%);
 display: flex;
 justify-content: center;
 align-items: center;
