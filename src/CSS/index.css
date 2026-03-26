@@ -120,16 +120,7 @@ transition: var(--transition);
 }
 
 button[onclick="logout()"] :hover {
-align-self: flex-end;
-margin-bottom: 1.5rem;
-background-color: var=(var(--cor-primaria-1));
-color: var(--cor-primaria-4);
-padding: 10px 16px;
-border: none;
-border-radius: var(--ratio);
-cursor: pointer;
-font-weight: 500;
-transition: var(--transition);
+background-color: var(--cor-primaria-2);
 }
 #lista{
 width:100%;
