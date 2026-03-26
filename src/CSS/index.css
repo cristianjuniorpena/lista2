@@ -78,6 +78,19 @@ color: var(--cor-branco);
 cursor: pointer;
 transition: var(--transition);
 }
+
+button {
+padding: 12px;
+font-size: 1rem;
+font-weight: 500;
+border: none;
+border-radius: var(--ratio);
+background-color: var(--cor-primaria-2);
+color: var(--cor-branco);
+cursor: pointer;
+transition: var(--transition);
+}
+
 button.hover {
 background-color: var(--cor-primaria-1);
 }
