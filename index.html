@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista2026</title>
     <link rel="stylesheet" href="src/CSS/index.css">
-    <link rel="shortcut icon" href="src/imagens/cristos32.ico" type="imagen/x-icon">
+    <link rel="shortcut icon" href="src/icons/cristos32.ico" type="imagen/x-icon">
 </head>
 <body>
     <div class="container"> 
-        <img id="logo" src="src/imagens/cristo512.png" alt="logo">  
+        <img id="logo" src="src/icons/" alt="logo">  
         
         <h2 class = "titulo">Projeto cristo jr</h2>
         <ul id="lista"></ul>
@@ -20,8 +20,20 @@
             <button onclick="adicionarItem()">Adicionar</button>
             <buttton onclick="logout()">Sair</buttton>
         </div>
-        
-        <script type = "module" src="app.js"></script>
     </div>
+        <script type = "module" src="app.js"></script>
+        <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js')
+                    .then(registration => {
+                        console.log('ServiceWorker registrado com sucesso:', registration.scope);
+                    })
+                    .catch(error => {
+                        console.log('Falha ao registrar o ServiceWorker:', error);
+                    });
+            });
+        }
+        </script>
 </body>
 </html>
