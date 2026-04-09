@@ -8,43 +8,43 @@
     "theme_color" : "#95B8D1",
     "icons" : [
         {
-            "src" : "/icons/cristo72.png",
-            "size" : "72x72",
+            "src" : "src/icons/cristo72.png",
+            "sizes" : "72x72",
             "type" : "image/png"
         },
         {
-            "src" : "/icons/cristo96.png",
-            "size" : "96x96",
+            "src" : "src/icons/cristo96.png",
+            "sizes" : "96x96",
             "type" : "image/png"
         },
         {
-            "src" : "/icons/cristo128.png",
-            "size" : "128x128",
+            "src" : "src/icons/cristo128.png",
+            "sizes" : "128x128",
             "type" : "image/png"
         },
         {
-            "src" : "/icons/cristo144.png",
-            "size" : "144x144",
+            "src" : "src/icons/cristo144.png",
+            "sizes" : "144x144",
             "type" : "image/png"
         },
         {
-            "src" : "/icons/cristo152.png",
-            "size" : "152x152",
+            "src" : "src/icons/cristo152.png",
+            "sizes" : "152x152",
             "type" : "image/png"
         },
         {
-            "src" : "/icons/cristo192.png",
-            "size" : "192x192",
+            "src" : "src/icons/cristo192.png",
+            "sizes" : "192x192",
             "type" : "image/png"
         },
         {
-            "src" : "/icons/cristo384.png",
-            "size" : "384x384",
+            "src" : "src/icons/cristo384.png",
+            "sizes" : "384x384",
             "type" : "image/png"
         },
         {
-            "src" : "/icons/cristo512.png",
-            "size" : "512x512",
+            "src" : "src/icons/cristo512.png",
+            "sizes" : "512x512",
             "type" : "image/png"
         }
     ]
