@@ -1,0 +1,51 @@
+{
+    "name" : "lista de compras",
+    "short_name" : "Lista Compras",
+    "description" : "um aplicativo de uma lista de compras de cristo jr",
+    "start_url" : "/",
+    "display" : "standalone",
+    "background_color" : "#ffffff",
+    "theme_color" : "#95B8D1",
+    "icons" : [
+        {
+            "src" : "src/icons/cristo72.png",
+            "sizes" : "72x72",
+            "type" : "image/png"
+        },
+        {
+            "src" : "src/icons/cristo96.png",
+            "sizes" : "96x96",
+            "type" : "image/png"
+        },
+        {
+            "src" : "src/icons/cristo128.png",
+            "sizes" : "128x128",
+            "type" : "image/png"
+        },
+        {
+            "src" : "src/icons/cristo144.png",
+            "sizes" : "144x144",
+            "type" : "image/png"
+        },
+        {
+            "src" : "src/icons/cristo152.png",
+            "sizes" : "152x152",
+            "type" : "image/png"
+        },
+        {
+            "src" : "src/icons/cristo192.png",
+            "sizes" : "192x192",
+            "type" : "image/png"
+        },
+        {
+            "src" : "src/icons/cristo384.png",
+            "sizes" : "384x384",
+            "type" : "image/png"
+        },
+        {
+            "src" : "src/icons/cristo512.png",
+            "sizes" : "512x512",
+            "type" : "image/png"
+        }
+    ]
+}
