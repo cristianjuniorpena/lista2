@@ -1,3 +1,6 @@
+// app.js - Gerencia lista de compras com Supabase (usuários reais) ou localStorage (demo)
+import { supabase } from './supabaseClient.js'
+
 let currentUser = null;
 let items = [];
 
@@ -23,19 +26,85 @@ function checkAuth() {
     return true;
 }
 
-// Carregar itens do localStorage
-function loadItems() {
-    const key = `shoppingList_${currentUser.email}`;
-    const stored = localStorage.getItem(key);
-    items = stored ? JSON.parse(stored) : [];
+// ========== SUPABASE FUNCTIONS ==========
+async function loadItemsFromSupabase() {
+    const { data, error } = await supabase
+        .from('shopping_items')
+        .select('*')
+        .eq('user_id', currentUser.id)
+        .order('created_at', { ascending: true });
+    
+    if (error) {
+        console.error('Erro ao carregar itens:', error);
+        items = [];
+    } else {
+        items = data.map(item => ({
+            id: item.id,
+            name: item.name,
+            completed: item.completed
+        }));
+    }
     renderList();
 }
 
-// Salvar itens
+async function saveItemsToSupabase() {
+    // Para simplificar, vamos recriar a lista no Supabase
+    // Primeiro, deleta todos os itens do usuário
+    const { error: deleteError } = await supabase
+        .from('shopping_items')
+        .delete()
+        .eq('user_id', currentUser.id);
+    
+    if (deleteError) {
+        console.error('Erro ao limpar lista:', deleteError);
+        return;
+    }
+    
+    // Insere os itens atuais
+    if (items.length === 0) return;
+    
+    const itemsToInsert = items.map(item => ({
+        user_id: currentUser.id,
+        name: item.name,
+        completed: item.completed,
+        created_at: new Date().toISOString()
+    }));
+    
+    const { error: insertError } = await supabase
+        .from('shopping_items')
+        .insert(itemsToInsert);
+    
+    if (insertError) {
+        console.error('Erro ao salvar itens:', insertError);
+    }
+}
+
+// Função mais eficiente: ao invés de recriar toda a lista, podemos fazer operações individuais
+// Mas para manter a lógica simples e compatível com o código existente, usamos recriação total.
+// Para produção, seria melhor usar upsert ou operações por item.
+
+// ========== FUNÇÕES PRINCIPAIS (compatíveis com ambos modos) ==========
+function loadItems() {
+    if (currentUser.isDemo) {
+        const key = `shoppingList_${currentUser.email}`;
+        const stored = localStorage.getItem(key);
+        items = stored ? JSON.parse(stored) : [];
+        renderList();
+    } else {
+        loadItemsFromSupabase();
+    }
+}
+
 function saveItems() {
-    const key = `shoppingList_${currentUser.email}`;
-    localStorage.setItem(key, JSON.stringify(items));
-    renderList();
+    if (currentUser.isDemo) {
+        const key = `shoppingList_${currentUser.email}`;
+        localStorage.setItem(key, JSON.stringify(items));
+        renderList();
+    } else {
+        saveItemsToSupabase().then(() => {
+            renderList();
+        });
+    }
 }
 
 // Adicionar item
@@ -44,7 +113,7 @@ function addItem() {
     if (name === '') return;
     
     const newItem = {
-        id: Date.now(),
+        id: currentUser.isDemo ? Date.now() : crypto.randomUUID ? crypto.randomUUID() : Date.now(),
         name: name,
         completed: false
     };
@@ -54,13 +123,11 @@ function addItem() {
     newItemInput.focus();
 }
 
-// Remover item individual
 function deleteItem(id) {
     items = items.filter(item => item.id !== id);
     saveItems();
 }
 
-// Alternar status (marcar/desmarcar) de UM item
 function toggleItem(id) {
     const item = items.find(item => item.id === id);
     if (item) {
@@ -69,25 +136,20 @@ function toggleItem(id) {
     }
 }
 
-// Selecionar todos / desmarcar todos (toggle)
 function selectAllItems() {
     const allCompleted = items.every(item => item.completed === true);
     if (allCompleted) {
-        // Desmarcar todos
         items.forEach(item => item.completed = false);
     } else {
-        // Marcar todos
         items.forEach(item => item.completed = true);
     }
-    saveItems(); // re-renderiza e atualiza visibilidade do botão excluir
+    saveItems();
 }
 
-// Conta quantos itens estão marcados
 function getSelectedCount() {
     return items.filter(item => item.completed).length;
 }
 
-// Mostra ou esconde o botão "Excluir selecionados"
 function updateDeleteSelectedButtonVisibility() {
     if (!deleteSelectedBtn) return;
     const selectedCount = getSelectedCount();
@@ -98,7 +160,6 @@ function updateDeleteSelectedButtonVisibility() {
     }
 }
 
-// Exclui todos os itens marcados
 function deleteSelectedItems() {
     const newItems = items.filter(item => !item.completed);
     if (newItems.length === items.length) return;
@@ -106,7 +167,7 @@ function deleteSelectedItems() {
     saveItems();
 }
 
-// Edição inline (substitui o prompt)
+// Edição inline
 function startInlineEdit(itemId) {
     const item = items.find(i => i.id === itemId);
     if (!item) return;
@@ -118,44 +179,31 @@ function startInlineEdit(itemId) {
     if (!itemNameSpan) return;
     
     const currentName = item.name;
-    
-    // Criar input
     const input = document.createElement('input');
     input.type = 'text';
     input.value = currentName;
     input.classList.add('inline-edit-input');
     
-    // Substituir span pelo input
     itemNameSpan.replaceWith(input);
     input.focus();
     input.select();
     
-    // Função para finalizar edição
     const finishEdit = () => {
         const newName = input.value.trim();
         if (newName !== '' && newName !== currentName) {
             item.name = newName;
-            saveItems(); // re-renderiza a lista inteira (mas perderia o foco, ok)
+            saveItems();
         } else {
-            // Se não mudou ou vazio, apenas restaura o span sem alterar
-            renderList(); // re-renderiza para voltar ao estado normal
+            renderList();
         }
     };
     
-    // Salvar ao pressionar Enter
     input.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') {
-            finishEdit();
-        }
+        if (e.key === 'Enter') finishEdit();
     });
-    
-    // Salvar ao perder o foco
     input.addEventListener('blur', finishEdit);
-    
-    // Cancelar com ESC (restaura sem salvar)
     input.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
-            // Restaurar span original sem alterar
             const span = document.createElement('span');
             span.className = 'item-name';
             span.textContent = currentName;
@@ -164,7 +212,6 @@ function startInlineEdit(itemId) {
     });
 }
 
-// Renderizar lista
 function renderList() {
     if (!shoppingListEl) return;
     
@@ -189,7 +236,6 @@ function renderList() {
         </li>
     `).join('');
     
-    // Adicionar eventos
     document.querySelectorAll('.item-checkbox').forEach((cb, idx) => {
         cb.addEventListener('change', () => toggleItem(items[idx].id));
     });
@@ -203,7 +249,6 @@ function renderList() {
     updateDeleteSelectedButtonVisibility();
 }
 
-// Função para escapar HTML
 function escapeHtml(str) {
     return str.replace(/[&<>]/g, function(m) {
         if (m === '&') return '&amp;';
@@ -213,8 +258,8 @@ function escapeHtml(str) {
     });
 }
 
-// Logout
 function logout() {
+    supabase.auth.signOut().catch(console.error);
     localStorage.removeItem('user');
     window.location.href = 'login.html';
 }

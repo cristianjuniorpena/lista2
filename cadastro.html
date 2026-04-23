@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Cristo's Grocery - Cadastro</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="src/CSS/cadastro.css">
+    <link rel="shortcut icon" href="src/icons/cristos32.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <img id="logo" src="src/icons/cristo512.png" alt="Logo Cristo's Grocery">
+        <h2 class="titulo">Criar Conta</h2>
+        
+        <div class="input-group">
+            <i class="fas fa-user"></i>
+            <input type="text" id="nome" placeholder="Seu nome (opcional)" autocomplete="name">
+        </div>
+        
+        <div class="input-group">
+            <i class="fas fa-envelope"></i>
+            <input type="email" id="email" placeholder="Seu e-mail" autocomplete="email">
+        </div>
+        <div class="error-message" id="emailError"></div>
+        
+        <div class="input-group">
+            <i class="fas fa-lock"></i>
+            <input type="password" id="senha" placeholder="Senha (mínimo 6 caracteres)" autocomplete="new-password">
+            <button type="button" id="toggleSenha" class="toggle-password" aria-label="Mostrar senha">
+                <i class="fas fa-eye-slash"></i>
+            </button>
+        </div>
+        <div class="error-message" id="senhaError"></div>
+        
+        <div class="input-group">
+            <i class="fas fa-lock"></i>
+            <input type="password" id="confirmarSenha" placeholder="Confirmar senha" autocomplete="off">
+            <button type="button" id="toggleConfirmarSenha" class="toggle-password" aria-label="Mostrar senha">
+                <i class="fas fa-eye-slash"></i>
+            </button>
+        </div>
+        <div class="error-message" id="confirmarError"></div>
+        
+        <div class="botoes">
+            <button id="btnCadastrar" class="btn-primary">
+                <span>Cadastrar</span>
+                <i class="fas fa-spinner fa-spin" style="display: none;"></i>
+            </button>
+            <button id="btnVoltar" class="btn-secondary">Voltar para Login</button>
+        </div>
+    </div>
+    
+    <script type="module" src="cadastro.js"></script>
+</body>
+</html>
