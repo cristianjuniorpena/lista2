@@ -12,7 +12,6 @@
 </head>
 <body>
     <div class="app-container">
-        <!-- Header -->
         <header class="app-header">
             <img id="logo" src="src/icons/cristo512.png" alt="Logo">
             <div class="user-info">
@@ -25,6 +24,16 @@
         
         <main class="main-content">
             <h1 class="page-title">Lista de Compras</h1>
+            
+            <!-- Botão de excluir selecionados (aparece apenas quando 2+ itens marcados) -->
+            <div class="action-bar">
+                <button id="selectAllBtn" class="btn-select-all">
+                <i class="fas fa-check-double"></i> Selecionar todos
+                    </button>
+                    <button id="deleteSelectedBtn" class="btn-delete-selected hidden">
+                <i class="fas fa-trash-alt"></i> Excluir selecionados
+                    </button>
+            </div>
             
             <!-- Adicionar item -->
             <div class="add-item-form">
@@ -47,7 +56,6 @@
     
     <script type="module" src="app.js"></script>
     <script>
-        // Service Worker (PWA)
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('/service-worker.js')
