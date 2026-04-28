@@ -110,3 +110,11 @@ if (localStorage.getItem('user')) {
     // Por simplicidade, redireciona direto
     window.location.href = 'index.html';
 }
+
+const esqueciSenhaLink = document.getElementById('esqueciSenha');
+if (esqueciSenhaLink) {
+    esqueciSenhaLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.location.href = 'recuperar.html';
+    });
+}

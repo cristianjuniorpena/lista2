@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Cristo's Grocery - Recuperar Senha</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="src/CSS/recuperar.css">
+    <link rel="shortcut icon" href="src/icons/cristos32.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <img id="logo" src="src/icons/cristo512.png" alt="Logo Cristo's Grocery">
+        <h2 class="titulo">Recuperar Senha</h2>
+        <p class="descricao">Digite seu e-mail para receber um link de redefinição de senha.</p>
+        
+        <div class="input-group">
+            <i class="fas fa-envelope"></i>
+            <input type="email" id="email" placeholder="Seu e-mail" autocomplete="email">
+        </div>
+        <div class="error-message" id="emailError"></div>
+        <div class="success-message" id="successMessage" style="display: none;"></div>
+        
+        <div class="botoes">
+            <button id="btnEnviar" class="btn-primary">
+                <span>Enviar link</span>
+                <i class="fas fa-spinner fa-spin" style="display: none;"></i>
+            </button>
+            <button id="btnVoltar" class="btn-secondary">Voltar para Login</button>
+        </div>
+    </div>
+    
+    <script type="module" src="recuperar.js"></script>
+</body>
+</html>

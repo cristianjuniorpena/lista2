@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Cristo's Grocery - Redefinir Senha</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="src/CSS/atualizar-senha.css">
+    <link rel="shortcut icon" href="src/icons/cristos32.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <img id="logo" src="src/icons/cristo512.png" alt="Logo Cristo's Grocery">
+        <h2 class="titulo">Redefinir Senha</h2>
+        <p class="descricao">Digite sua nova senha abaixo.</p>
+        
+        <div class="input-group">
+            <i class="fas fa-lock"></i>
+            <input type="password" id="novaSenha" placeholder="Nova senha (mínimo 6 caracteres)">
+            <button type="button" id="toggleSenha" class="toggle-password" aria-label="Mostrar senha">
+                <i class="fas fa-eye-slash"></i>
+            </button>
+        </div>
+        <div class="error-message" id="senhaError"></div>
+        
+        <div class="input-group">
+            <i class="fas fa-lock"></i>
+            <input type="password" id="confirmarSenha" placeholder="Confirmar nova senha">
+            <button type="button" id="toggleConfirmar" class="toggle-password" aria-label="Mostrar senha">
+                <i class="fas fa-eye-slash"></i>
+            </button>
+        </div>
+        <div class="error-message" id="confirmarError"></div>
+        
+        <div class="botoes">
+            <button id="btnRedefinir" class="btn-primary">
+                <span>Redefinir senha</span>
+                <i class="fas fa-spinner fa-spin" style="display: none;"></i>
+            </button>
+            <button id="btnVoltar" class="btn-secondary">Voltar para Login</button>
+        </div>
+    </div>
+    
+    <script type="module" src="atualizar-senha.js"></script>
+</body>
+</html>
