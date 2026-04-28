@@ -6,13 +6,13 @@ const emailInput = document.getElementById('email');
 const emailError = document.getElementById('emailError');
 const successMessage = document.getElementById('successMessage');
 
-// URL base para redirecionamento após clique no email
-// Em desenvolvimento local, use http://localhost:5500 (ou a porta que você usa)
-// Em produção, substitua pelo domínio real
+// URL base para redefinição - ajuste após deploy na Vercel
+// Substitua 'seu-projeto.vercel.app' pelo seu domínio real
+const PRODUCTION_URL = 'https://listadecristianjunior.app'; // <-- ALTERE AQUI
 const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
 const redirectTo = isLocal 
-    ? 'http://localhost:5500/atualizar-senha.html'  // seu servidor local
-    : `${window.location.origin}/atualizar-senha.html`;  // Vercel (automático)
+    ? 'http://localhost:5500/atualizar-senha.html' 
+    : `${PRODUCTION_URL}/atualizar-senha.html`;
 
 async function enviarLinkRecuperacao(email) {
     emailError.innerText = '';
